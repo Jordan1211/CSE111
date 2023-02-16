@@ -20,7 +20,9 @@ def main():
 # attempting to work through loop
     quantity_list = [1,1,1,2,2,2]
     tense_list = ["past", "present", "future", "past", "present", "future"]
-    
+    sentence = create_sentence(quantity_list, tense_list)
+
+def create_sentence(quantity_list, tense_list):
     for (quantity,tense) in zip(quantity_list, tense_list):
         determiner = get_determiner(quantity)
         noun = get_noun(quantity)
@@ -33,6 +35,7 @@ def main():
             quantity = "single"
         else:
             quantity = "plural"
+        
         print(f'{quantity}, {tense}: {determiner.capitalize()} {adjective} {noun} {prep_phrase1} {adverb} {verb} {prep_phrase2}.')
 
 # # a.	single	past
