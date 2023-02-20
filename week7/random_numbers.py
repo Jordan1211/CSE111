@@ -1,3 +1,5 @@
+import random
+
 def main():
     """
     As a team, write a Python program named random_numbers.py that creates a 
@@ -27,20 +29,42 @@ def main():
     numbers [16.2, 75.1, 52.3, 84.2, 99.5, 20.4, 25.3]
     words ['join', 'love', 'smile', 'love', 'cloud', 'head']
     """
-    numbers1 = append_random_numbers()
-    numbers2 = append_random_numbers()
-    words = append_random_words()
+    numbers = [16.2, 75.1, 52.3]
+    print(f'Original numbers list: {numbers}')
 
-    print(f'numbers {numbers1}')
-    print(f'numbers {numbers2}')
-    print(f'words {words}')
+    append_random_numbers(numbers)
+    print(f'Numbers, one appended: {numbers}')
+
+    append_random_numbers(numbers,3)
+    print(f'Numbers, three appended: {numbers}')
+  
+    words = []
+    
+    append_random_words(words)
+    print(f'words: {words}')
+
+    append_random_words(words,5)
+    print(f'words five appended: {words}')
 
 
-def append_random_numbers(numbers_list, quantity = 1):
+def append_random_numbers(numbers_list, quantity=1):
     """adds random numbers"""
+    for i in range(quantity):
+        random_number = random.uniform(0, 100)
+        rounded_random_number = round(random_number, 1)
+        numbers_list.append(rounded_random_number)
+
 
 def append_random_words(words_list, quantity = 1):
     """adds random words"""
+    word_bank = ["worker","grace","hotdog","claim","divide","hard",
+                    "aware","disagree","bleed","fairy","heavy",
+                    "biography","throat","ratio","thanks","how","now"
+                    "brown","cow","dog","hit","me","one","more","time"]
+    
+    for i in range(quantity):
+        random_word = random.choice(word_bank)
+        words_list.append(random_word)
 
 if __name__ == "__main__":
     main()
