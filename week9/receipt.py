@@ -22,16 +22,13 @@ def main():
         - The request.csv file contains the items ordered by a customer."""
     
     products_dict = read_dictionary("week9/products.csv", PRODUCT_NUMBER_INDEX)
-    print("All Products:")
+    print("All Products")
     print(products_dict)
+    print()
 
-    # request_list = []
-    # requests = open("request.csv", mode="rt")
-    # reader = csv.reader(requests)
-    # next(reader)
-    # for request in reader:
-        
+    read_requests(products_dict)
 
+     
 
 def read_dictionary(filename, key_column_index):
     """Read the contents of a CSV file into a compound
@@ -49,14 +46,28 @@ def read_dictionary(filename, key_column_index):
 
     with open(filename, "rt") as csv_file:
         reader = csv.reader(csv_file)
-                            
+                       
         next(reader)
 
         for row_list in reader:
             if len(row_list) != 0:
                 key = row_list[key_column_index]
                 dictionary[key] = row_list
+
     return dictionary
+
+def read_requests(products_dict):
+    with open("week9/request.csv", mode="rt") as requests_file:
+        reader = csv.reader(requests_file)
+        next(reader)
+
+        print('Requsted items')
+
+        for request in reader:
+            product_number = request[PRODUCT_NUMBER_INDEX]
+            quantity = request[QUANTITY_INDEX]
+
+            print(f'{products_dict[product_number][PRODUCT_NAME_INDEX]}: {quantity} @ ${products_dict[product_number][PRODUCT_PRICE_INDEX]}')
 
 # Expected Output:
 # All Products
