@@ -6,17 +6,21 @@ def main():
 
         # Print the list of phone numbers which will show that
         # some of the phone number don't have an area code.
+        print('Original List')
         print(phone_numbers)
+        print()
 
         # Some of the phone numbers in phone_numbers.txt do not start
         # with an area code. Replace each short phone number with a
         # phone number that begins with the area code "208-" To do this,
         # call the map function and pass the add_area_code function and
         # the list of phone numbers as arguments to the map function.
-        pass
+        new_numbers = list(map(add_area_code, phone_numbers))
 
         # Print the list with the corrected phone numbers.
+        print('New Numbers')
         print(new_numbers)
+        print()
 
     except (FileNotFoundError, PermissionError) as error:
         print(type(error).__name__, error, sep=": ")
@@ -33,8 +37,13 @@ def add_area_code(phone_number):
         "ddd-dddd" or "ddd-ddd-dddd"
     Return: a string of digits formated as "ddd-ddd-dddd"
     """
-    pass
 
+    phone_number_length = len(phone_number)
+
+    if phone_number_length < 10:
+        phone_number= '208-'+phone_number
+
+    return phone_number
 
 def read_list(filename):
     """Read the contents of a text file into a list and
