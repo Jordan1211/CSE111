@@ -100,8 +100,18 @@ def print_death_age(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    print('Ages at death')
 
+    for people in people_dict.items():
+        key = people[0]
+        value = people[1]
+        
+        name = value[NAME_INDEX]
+        birth_year = int(value[BIRTH_YEAR_INDEX])
+        death_year = int(value[DEATH_YEAR_INDEX])
+
+        death_age = death_year - birth_year
+        print(f'{name} {death_age}')
 
 def count_genders(people_dict):
     """Count and print the number of males
@@ -113,7 +123,24 @@ def count_genders(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    print('Genders')
+
+    male_total = 0
+    female_total = 0
+    
+    for people in people_dict.items():
+        key = people[0]
+        value = people[1]
+
+        gender = value[GENDER_INDEX]
+
+        if gender == 'F':
+            female_total += 1
+        else:
+            male_total +=1
+
+    print(f'Number of males: {male_total}')
+    print(f'Number of females: {female_total}') 
 
 
 def print_marriages(marriages_dict, people_dict):
@@ -130,8 +157,25 @@ def print_marriages(marriages_dict, people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    print('Marriages')
+    
+    for marriage_key, marriage_list in marriages_dict.items():
 
+        marriage_date = marriage_list[WEDDING_YEAR_INDEX]
+
+        male_key_value = marriage_list[HUSBAND_KEY_INDEX]
+        male_list = people_dict[male_key_value]
+        male_name = male_list[NAME_INDEX]
+        male_birth = male_list[BIRTH_YEAR_INDEX]
+        male_marriage_age = marriage_date - male_birth
+
+        female_key_value = marriage_list[WIFE_KEY_INDEX]
+        female_list = people_dict[female_key_value]
+        female_name = female_list[NAME_INDEX]
+        female_birth = female_list[BIRTH_YEAR_INDEX]
+        female_marriage_age = marriage_date - female_birth
+
+        print(f'{male_name} {male_marriage_age} > {marriage_date} < {female_name} {female_marriage_age}')
 
 # If this file was executed like this:
 # > python teach_solution.py
