@@ -11,19 +11,18 @@ CSE 111 Proposal for a Student Chosen Program
 
 1. What is the title of your program?
 
-Interest Calculator GUI
+Concrete Floor Estimate GUI
 
 2. What real-world problem will your program address or help to solve?
 
-Interest Calculators on banking, credit card or lender websites are 
-misleading and complex. This will be a simple GUI that only asks 
-for a few pieces of information and isn't trying to sell.
+Concrete calculations are complex and involve multiple different steps.
+This will be a simple GUI that only asks for a few pieces of information.
 
 3. What will you learn from developing this program?
 
 I will learn what calculations come into play when calculating different
-types of loans. I want a universal calculator so I need to look into many
-and see what variables I should consider.
+types of scenarios. I want a universal calculation so I need to look into 
+many scenariosvand see what variables I should consider.
 
 4. What Python modules will your program use?
 
@@ -31,7 +30,6 @@ and see what variables I should consider.
     pandas, pytest, random, requests, and tkinter.)
 
 datetime, pytest, math, and tkinter are the modules I forsee using.
-
 
 5. Will you separate your Python program into functions that each
 perform a single task?
