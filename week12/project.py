@@ -78,8 +78,11 @@ def populate_main_window(frm_main):
     # Create a label that displays "years"
     lbl_cost_units = Label(frm_main, text="dollars")
 
-    # Create labels that will display the results.
-    lbl_total = Label(frm_main, text="<Total>", width=20)
+    # Create labels that will display the total.
+    lbl_total = Label(frm_main, text="<Total>", width=30)
+
+    # Create labels that will display the date.
+    lbl_date = Label(frm_main, text="<Date>", width=30)
 
     # Create the Clear button.
     btn_clear = Button(frm_main, text="Clear")
@@ -103,12 +106,10 @@ def populate_main_window(frm_main):
     lbl_cost.grid(      row=3, column=0, padx=3, pady=3)
     ent_cost.grid(      row=3, column=1, padx=3, pady=3)
     lbl_cost_units.grid(row=3, column=2, padx=3, pady=3)
-    lbl_cost
-
 
     lbl_total.grid(     row=5, columnspan=4)
-
-    btn_clear.grid(row=6, column=0, padx=3, pady=3, columnspan=4, sticky="w")
+    lbl_date.grid(      row=6, columnspan=5)
+    btn_clear.grid(row=7, column=0, padx=3, pady=3, columnspan=4, sticky="w")
 
 
     # This function will be called each time the user releases a key.
@@ -122,6 +123,7 @@ def populate_main_window(frm_main):
             width = ent_width.get()
             depth = ent_depth.get()
             cost = ent_cost.get()
+            current_date_and_time = datetime.now()
 
             # 
             depth_feet = depth/12
@@ -133,11 +135,13 @@ def populate_main_window(frm_main):
             total_price = (cubic_yards * cost) + labor
 
             lbl_total.config(text=f"Total Cost: ${total_price:.2f}")
+            lbl_date.config(text=f"Quoted: {current_date_and_time:%m/%d/%Y %I:%M%p}")
 
         except ValueError:
-            # When the user deletes all the digits in the age
-            # entry box, clear the slowest and fastest labels.
+            # When the user deletes all the digits in the cost
+            # entry box, clear the total label.
             lbl_total.config(text="")
+            lbl_date.config(text="")
 
     # This function will be called each time
     # the user presses the "Clear" button.
@@ -149,6 +153,7 @@ def populate_main_window(frm_main):
         ent_depth.clear()
         ent_cost.clear()
         lbl_total.config(text="")
+        lbl_date.config(text="")
         ent_length.focus()
 
 
@@ -164,6 +169,32 @@ def populate_main_window(frm_main):
 
     # Give the keyboard focus to the age entry box.
     ent_length.focus()
+
+
+# Duplicating the exact calculate event in order to complete testing
+def calculate_area(length, width, depth, cost):
+    """Compute and display the user's slowest
+    and fastest beneficial heart rates.
+    """
+    try:
+        # Completeing calucaltions in order to set total price
+        depth_feet = depth/12
+        area = length*width*depth_feet
+        surface_area = length*width
+        labor = surface_area*3
+        cubic_yards = area/27
+
+        total_price = (cubic_yards * cost) + labor
+        
+        return round(total_price,2)
+
+    except ValueError as val_err:
+        # When the user deletes all the digits in the cost
+        # entry box, clear the total label.
+        print(type(val_err).__name__, val_err, sep=": ")
+        print("You entered an invalid integer for the line number.")
+        print("Run the program again and enter an integer for" \
+                " the line number.")
 
 
 # If this file is executed like this:
