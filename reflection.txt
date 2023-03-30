@@ -1,0 +1,39 @@
+Please respond thoroughly (at least two sentences for each question) to
+the following three questions.
+
+1. Describe an experience you had this semester where you saw the power of
+functions.
+
+As we went through a progression of learning I really found a strong case
+for functions during week 3. At the beginning of the week we did functions
+for fitness including a bmi, basal metabolic rate and height in meters 
+calculation. Also a big part of that week was spent developing the scene.py
+assignment. This required repitition in making shapes on a canvas that were 
+in slightly different locations. Such as multiple circles to form a cloud
+or multiple triangles to make a mountain. The use of functions made it so 
+there was much easier repitition where I only had to change parameters 
+rather than make fully new functions.
+
+
+2. In your judgment, what is the value of test functions?
+
+Test functions were a very fun piece for me. The value of a test function to 
+me is that you can do unit tests. This means for each change of your code 
+you can make new tests and test previous developments all at once. This way
+as you make changes you can have the confidence that nothing is broken. 
+Along with this it is extremely nice to not have to go in and manually test
+your function.
+
+
+3. Describe your process for troubleshooting and fixing a program that
+has a problem. What is one thing you can do to improve your process?
+
+I was extremely grateful for the learning about debugging. Prior to fully
+understanding how to use the debugger I would look at the error, find the 
+row there error was in, think through the code and try to identify the 
+problem. Often this was a lenthy process that could be hard to narrow down
+the issue unless it was a syntax error. Now I have learned more about 
+debugging I almost always turn first to running my program through the
+debugger and looking through the items set through the functions. It has
+been pretty life changing. 
+
